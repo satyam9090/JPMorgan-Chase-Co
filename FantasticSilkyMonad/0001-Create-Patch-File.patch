@@ -1,0 +1,63 @@
+From 863ed5733b9ffd25c89256d8ca7a7e95d8db6f6f Mon Sep 17 00:00:00 2001
+From: Satyam Singh Chauhan <sat00yam@gmail.com>
+Date: Fri, 24 Apr 2020 11:28:34 +0000
+Subject: [PATCH] Create Patch File
+
+---
+ __pycache__/client3.cpython-38.pyc | Bin 0 -> 1245 bytes
+ client_test.py                     |   6 ++++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+ create mode 100644 __pycache__/client3.cpython-38.pyc
+
+diff --git a/__pycache__/client3.cpython-38.pyc b/__pycache__/client3.cpython-38.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..e0338a5138564f585ef1cff15b426884e594189b
+GIT binary patch
+literal 1245
+zcmZ8h&2Aev5GHrItCcLdY5c3^!XAQDKpna0#W2z|X`J-Z21yJbLZn@+mm_=a)vioZ
+zMXbsv<t1{Hd+Uqj&`034r`&t$sY5C@jLw4dLk`KAk017+(`gZuhadj<b*o9p-!8Z*
+zI7c4g(0`$lMADK7>TMtbZ$lA!%LJ2wh-4^Y$z=47h=z=118o9LnVbgd1GHcX;u)RM
+zJ@U(2(S~r|0eZ4L{|ut}EnstYNiOLnoqz7ExLpvj0=F@DTdYC@R%i4L6Ki5!Y=}+h
+z$|kJAI&8q^fUT1mr35x%1=b#rv$wd~f&^CNQkS4^cgZYR<edE^=|1UoK4L%Q`Q*!E
+zV@A9Eep%;Pd0cC=yR*Hs-9H<HI{&_q-~E13{6h)Jaa>D;9>ehjhkk@=inw&i1vSnK
+zx<rO}AH4{C%&y~b8cf3tBBMLxf=#K5rfk5lns~CyU#MD+bKqH7@_N9{G4KjNg5<wt
+z<rp+KH9vw1RAw-V%gkh>x~L4dkv4UHY8$2=rH6&I(MT0JEaFU`ehje09<|Y+tTWS#
+zY;-oR4JbElo46re<To*Q;VReNpF}O8`FE#(To0kI#ueV(f0k7y)27Jxi}LjR=eo*d
+z|70{whgf_G={NnnETA&q-XERY_7RvpEc1mg6VK9~Yhglf;n$|BgLAnn<4T<GhDUZ4
+zohg+RnbV$<eZ+Q3@1X4kllLvoe+0u3i=uXD`3};IXO;ZqAGVrXH-#UJ5Hdhq3(W`P
+zD#x7_znQVsYCbM?&2t4VQDfJ9Tor~J&<6L^>VKPyiZ8lNT?TfHRVhal4_q%0jZbA=
+zIfs5>q1u>d6GZ5h>!F8{j!}^~p^U0!znZ4Qtf<m-a_^;kG0E?0o*DiXzS-_w{WZr2
+z^VVO3UT>24(=gA5kAHY#!@Z}^dS8g;u`0{r@V)}%wKgJN#Fm+22!fsHx)QNM?CPP2
+zULHJs_1e<s{&lVksj?xYsbvKc$3~cY1eT^YLP|+38doPb@Z@>~m5mXuVP-5tFr|$>
+z<Ftr<rCKG}p68!({}<(G;W_82TbUa$ISQ%;Ru2{&d$@*Enxjgn|3VhBAZaE`j#nJf
+Jb9R-s=zsfdK~ew!
+
+literal 0
+HcmV?d00001
+
+diff --git a/client_test.py b/client_test.py
+index af2bf26..1306868 100644
+--- a/client_test.py
++++ b/client_test.py
+@@ -7,14 +7,16 @@ class ClientTest(unittest.TestCase):
+       {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+     ]
+-    """ ------------ Add the assertion below ------------ """
++    for quote in quotes:
++      self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'], (quote['top_bid']['price'] + quote['top_ask']['price'])/2))
+ 
+   def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+     quotes = [
+       {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+     ]
+-    """ ------------ Add the assertion below ------------ """
++    for quote in quotes:
++      self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'], (quote['top_bid']['price'] + quote['top_ask']['price'])/2))
+ 
+ 
+   """ ------------ Add more unit tests ------------ """
+-- 
+2.20.1
+
